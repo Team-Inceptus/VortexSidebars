@@ -1,0 +1,4 @@
+name: VortexSidebars
+version: '${project.version}'
+main: me.dragin.vortexsidebars.Main
+api-version: '1.20'
