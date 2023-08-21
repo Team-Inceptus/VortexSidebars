@@ -4,6 +4,7 @@ import me.dragin.vortexsidebars.text.AnimatedText;
 import me.dragin.vortexsidebars.text.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
 
@@ -127,12 +128,12 @@ public class Sidebar {
      * @param title the title for the top of the sidebar, like a server or minigame name
      * @param lines the lines to display on the sidebar, cannot have duplicates
      */
-    public Sidebar(Text title, List<Text> lines) {
+    public Sidebar(Plugin plugin, Text title, List<Text> lines) {
         this.title = title;
 
         assert Bukkit.getScoreboardManager() != null;
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        objective = scoreboard.registerNewObjective(title.getText(), Criteria.DUMMY, title.getText());
+        objective = scoreboard.registerNewObjective(title.getText(), "dummy", title.getText());
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         lines = new ArrayList<>(lines);
@@ -149,7 +150,7 @@ public class Sidebar {
             public void run() {
                 update();
             }
-        }.runTaskTimer(Main.getInstance(), 1, 1);
+        }.runTaskTimer(plugin, 1, 1);
 
         players = new ArrayList<>();
     }

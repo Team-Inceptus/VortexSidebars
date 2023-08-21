@@ -1,6 +1,6 @@
 package me.dragin.vortexsidebars.text;
 
-import me.dragin.vortexsidebars.Main;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
@@ -65,7 +65,7 @@ public class AnimatedText extends Text {
      * @param texts the list of Strings to cycle through
      * @param delay the delay (in ticks) between each update
      */
-    public AnimatedText(List<String> texts, int delay) {
+    public AnimatedText(Plugin plugin, List<String> texts, int delay) {
         super(texts.get(0));
         this.texts = texts;
         this.delay = delay;
@@ -77,7 +77,7 @@ public class AnimatedText extends Text {
                     update();
                 }
             }
-        }.runTaskTimer(Main.getInstance(), 1, delay);
+        }.runTaskTimer(plugin, delay, delay);
     }
 
     /**
@@ -85,7 +85,7 @@ public class AnimatedText extends Text {
      * @param delay the delay (in ticks) between each update
      * @param startingIndex the index of the String to start with
      */
-    public AnimatedText(List<String> texts, int delay, int startingIndex) {
+    public AnimatedText(Plugin plugin, List<String> texts, int delay, int startingIndex) {
         super(texts.get(startingIndex));
         this.texts = texts;
         this.delay = delay;
@@ -97,7 +97,7 @@ public class AnimatedText extends Text {
                     update();
                 }
             }
-        }.runTaskTimer(Main.getInstance(), 1, delay);
+        }.runTaskTimer(plugin, delay, delay);
     }
 
     private void update() {
