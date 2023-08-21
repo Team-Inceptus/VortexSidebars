@@ -1,4 +1,4 @@
-package me.dragin.vortexsidebars.text;
+package us.teaminceptus.vortexsidebars.text;
 
 /**
  * An alternative to ChatColor that allows custom hex colors

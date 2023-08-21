@@ -1,4 +1,4 @@
-package me.dragin.vortexsidebars.text;
+package us.teaminceptus.vortexsidebars.text;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;

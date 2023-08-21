@@ -1,4 +1,4 @@
-package me.dragin.vortexsidebars.text;
+package us.teaminceptus.vortexsidebars.text;
 
 public class FieldText extends Text {
     private final Field field;
@@ -30,7 +30,7 @@ public class FieldText extends Text {
      */
     @Override
     public String getText() {
-        return prefix + String.valueOf(field.getValue()) + suffix;
+        return prefix + field.getValue() + suffix;
     }
 
     /**

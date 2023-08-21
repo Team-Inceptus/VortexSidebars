@@ -1,4 +1,4 @@
-package me.dragin.vortexsidebars.text;
+package us.teaminceptus.vortexsidebars.text;
 
 import java.util.concurrent.Callable;
 

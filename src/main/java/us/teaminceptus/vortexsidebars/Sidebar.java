@@ -1,7 +1,7 @@
-package me.dragin.vortexsidebars;
+package us.teaminceptus.vortexsidebars;
 
-import me.dragin.vortexsidebars.text.AnimatedText;
-import me.dragin.vortexsidebars.text.Text;
+import us.teaminceptus.vortexsidebars.text.AnimatedText;
+import us.teaminceptus.vortexsidebars.text.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

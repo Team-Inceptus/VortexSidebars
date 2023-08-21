@@ -1,4 +1,4 @@
-package me.dragin.vortexsidebars.text;
+package us.teaminceptus.vortexsidebars.text;
 
 /**
  * Simple object that holds a String, used in order to allow for AnimatedText and FieldText
