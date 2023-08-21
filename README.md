@@ -25,7 +25,7 @@ It supports hex codes, animated text, fields, and more!
     
     <dependencies>
         <dependency>
-            <groupId>us.teaminceptus.vortexsidebars</groupId>
+            <groupId>us.teaminceptus</groupId>
             <artifactId>vortexsidebars</artifactId>
             <version>[VERSION]</version>
         </dependency>
