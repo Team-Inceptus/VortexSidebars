@@ -2,35 +2,35 @@ package us.teaminceptus.vortexsidebars.text;
 
 public class FieldText extends Text {
     private final Field field;
-    private String prefix = "";
-    private String suffix = "";
+    private Text prefix = new Text("");
+    private Text suffix = new Text("");
 
     /**
      * @return the String ("" if not set) before the Field
      */
-    public String getPrefix() { return prefix; }
+    public Text getPrefix() { return prefix; }
 
     /**
      * @param newPrefix the String to put before the Field (e.g. "Players: ") when displaying
      */
-    public void setPrefix(String newPrefix) { prefix = newPrefix; }
+    public void setPrefix(Text newPrefix) { prefix = newPrefix; }
 
     /**
      * @return the String ("" if not set) after the Field
      */
-    public String getSuffix() { return suffix; }
+    public Text getSuffix() { return suffix; }
 
     /**
      * @param newSuffix the String to put after the Field (e.g. "/100") when displaying
      */
-    public void setSuffix(String newSuffix) { suffix = newSuffix; }
+    public void setSuffix(Text newSuffix) { suffix = newSuffix; }
 
     /**
      * @return the prefix + field + suffix
      */
     @Override
     public String getText() {
-        return prefix + field.getValue() + suffix;
+        return prefix.getText() + field.getValue() + suffix.getText();
     }
 
     /**
@@ -46,5 +46,12 @@ public class FieldText extends Text {
     public FieldText(Field field) {
         super(String.valueOf(field.getValue()));
         this.field = field;
+    }
+
+    public FieldText(Field field, Text prefix, Text suffix) {
+        super(String.valueOf(field.getValue()));
+        this.field = field;
+        this.prefix = prefix;
+        this.suffix = suffix;
     }
 }
