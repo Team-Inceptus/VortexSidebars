@@ -1,4 +1,4 @@
-# 🌀 VortexSidebars \[API\]
+# 🌀 VortexSidebars
 > Customizable sidebars for every purpose
 ## About
 VortexSidebars was made to make it easy for anyone to make sidebars for anything.
