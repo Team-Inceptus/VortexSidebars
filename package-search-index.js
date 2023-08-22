@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"us.teaminceptus.vortexsidebars"},{"l":"us.teaminceptus.vortexsidebars.text"}];updateSearchResults();
