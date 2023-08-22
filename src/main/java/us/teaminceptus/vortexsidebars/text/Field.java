@@ -2,12 +2,20 @@ package us.teaminceptus.vortexsidebars.text;
 
 import java.util.concurrent.Callable;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * Represents a Field that holds an output.
+ */
 public class Field {
     private final Callable<Object> function;
 
     /**
+     * Fetches the output of the function.
      * @return the output of the function, or null if it cannot be called
      */
+    @Nullable
     public Object getValue() {
         try {
             return function.call();
@@ -20,7 +28,8 @@ public class Field {
      * Usage: new Field(() -> someFunction())
      * @param function the function to call when the output is requested
      */
-    public Field(Callable<Object> function) {
+    public Field(@NotNull Callable<Object> function) {
+        if (function == null) throw new IllegalArgumentException("function cannot be null");
         this.function = function;
     }
 }

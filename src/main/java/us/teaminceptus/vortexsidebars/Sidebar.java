@@ -7,11 +7,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sidebar {
+/**
+ * Represents a Sidebar that can be displayed to players.
+ */
+public final class Sidebar {
     private final Scoreboard scoreboard;
     private final Objective objective;
     private final List<Text> lines;
@@ -19,15 +26,20 @@ public class Sidebar {
     private final List<Player> players;
 
     /**
+     * Fetches an immutable copy of the lines for the sidebar.
      * @return the lines for the scoreboard.
      */
-    public List<Text> getLines() { return lines; }
+    @NotNull
+    public List<Text> getLines() { 
+        return ImmutableList.copyOf(lines);
+    }
 
     /**
      * Adds a line to the sidebar. Will cancel if the line already exists, as sidebars do not support multiple lines with the same name. Defaults to the top if the index is not specified.
      * @param newLine the line to add
      */
-    public void addLine(Text newLine) {
+    public void addLine(@NotNull Text newLine) {
+        if (newLine == null) throw new IllegalArgumentException("newLine cannot be null");
         addLine(newLine, lines.size());
     }
 
@@ -36,7 +48,9 @@ public class Sidebar {
      * @param newLine the line to add
      * @param index the index (red score on the right)
      */
-    public void addLine(Text newLine, int index) {
+    public void addLine(@NotNull Text newLine, int index) {
+        if (newLine == null) throw new IllegalArgumentException("newLine cannot be null");
+
         if (lines.contains(newLine)) {
             return;
         }
@@ -62,7 +76,7 @@ public class Sidebar {
      * Removes a line from the sidebar.
      * @param text the Text of the line to remove
      */
-    public void removeLine(Text text) {
+    public void removeLine(@NotNull Text text) {
         if (!lines.contains(text)) return;
         int index = lines.indexOf(text);
         removeLine(index);
@@ -80,14 +94,20 @@ public class Sidebar {
 
 
     /**
+     * Fetches the title for the Sidebar.
      * @return the title for the sidebar (Text)
      */
+    @NotNull
     public Text getTitle() { return title; }
 
     /**
+     * Sets the title for the sidebar.
      * @param newTitle what to change the title to (Text)
      */
-    public void setTitle(Text newTitle) { title = newTitle; }
+    public void setTitle(@NotNull Text newTitle) {
+        if (newTitle == null) throw new IllegalArgumentException("newTitle cannot be null");
+        title = newTitle;
+     }
 
     /**
      * @return the players who are being displayed the sidebar
@@ -125,10 +145,24 @@ public class Sidebar {
     }
 
     /**
+     * Creates a new Sidebar.
+     * @param plugin the plugin that is creating the sidebar
+     * @param title the title for the top of the sidebar, like a server or minigame name
+     */
+    public Sidebar(@NotNull Plugin plugin, @NotNull Text title) {
+        this(plugin, title, new ArrayList<>());
+    }
+
+    /**
+     * Creates a new Sidebar.
+     * @param plugin the plugin that is creating the sidebar
      * @param title the title for the top of the sidebar, like a server or minigame name
      * @param lines the lines to display on the sidebar, cannot have duplicates
      */
-    public Sidebar(Plugin plugin, Text title, List<Text> lines) {
+    public Sidebar(@NotNull Plugin plugin, @NotNull Text title, @Nullable List<Text> lines) {
+        if (plugin == null) throw new IllegalArgumentException("plugin cannot be null");
+        if (title == null) throw new IllegalArgumentException("title cannot be null");
+
         this.title = title;
 
         assert Bukkit.getScoreboardManager() != null;

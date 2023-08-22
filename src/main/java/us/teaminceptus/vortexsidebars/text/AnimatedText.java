@@ -2,21 +2,33 @@ package us.teaminceptus.vortexsidebars.text;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import com.google.common.collect.ImmutableList;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnimatedText extends Text {
     private List<String> texts;
 
     /**
+     * Fetches an immutable copy of the texts to be displayed.
      * @return the list of Strings that are cycled through when displaying
      */
-    public List<String> getTexts() { return texts; }
+    @NotNull
+    public List<String> getTexts() { 
+        return ImmutableList.copyOf(texts);
+    }
 
     /**
+     * Sets the list of Strings to cycle through when displaying
      * @param newTexts the list of Strings to cycle through when displaying
      */
-    public void setTexts(List<String> newTexts) { texts = newTexts; }
+    public void setTexts(@Nullable List<String> newTexts) {
+        texts = new ArrayList<>(newTexts);
+    }
 
     private int delay;
 
@@ -54,7 +66,7 @@ public class AnimatedText extends Text {
     /**
      * @return whether the animation is paused
      */
-    public boolean getIsPaused() { return paused; }
+    public boolean isPaused() { return paused; }
 
     /**
      * @param newValue whether the animation should be paused
@@ -65,15 +77,18 @@ public class AnimatedText extends Text {
      * @param texts the list of Strings to cycle through
      * @param delay the delay (in ticks) between each update
      */
-    public AnimatedText(Plugin plugin, List<String> texts, int delay) {
+    public AnimatedText(@NotNull Plugin plugin, @NotNull List<String> texts, int delay) {
         super(texts.get(0));
+        
+        if (plugin == null || texts == null) throw new IllegalArgumentException("plugin and texts cannot be null");
+
         this.texts = texts;
         this.delay = delay;
 
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!getIsPaused()) {
+                if (!isPaused()) {
                     update();
                 }
             }
@@ -85,15 +100,17 @@ public class AnimatedText extends Text {
      * @param delay the delay (in ticks) between each update
      * @param startingIndex the index of the String to start with
      */
-    public AnimatedText(Plugin plugin, List<String> texts, int delay, int startingIndex) {
+    public AnimatedText(@NotNull Plugin plugin, @NotNull List<String> texts, int delay, int startingIndex) {
         super(texts.get(startingIndex));
         this.texts = texts;
         this.delay = delay;
 
+        if (plugin == null || texts == null) throw new IllegalArgumentException("plugin and texts cannot be null");
+
         new BukkitRunnable() {
             @Override
             public void run() {
-                if (!getIsPaused()) {
+                if (!isPaused()) {
                     update();
                 }
             }
