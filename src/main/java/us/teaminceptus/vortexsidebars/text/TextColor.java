@@ -27,6 +27,7 @@ public interface TextColor {
     String OBFUSCATE = "§k";
 
     /**
+     * Converts a Hex Code to a Color Code.
      * @param hex the hex code to use, should be 6 characters long with no #, not case-sensitive
      * @return the color code for the hex code, returns black if the hex code provided was in an invalid format
      */
