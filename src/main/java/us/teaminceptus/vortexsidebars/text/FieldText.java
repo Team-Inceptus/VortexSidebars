@@ -4,35 +4,35 @@ import org.jetbrains.annotations.NotNull;
 
 public class FieldText extends Text {
     private final Field field;
-    private String prefix = "";
-    private String suffix = "";
+    private Text prefix = new Text("");
+    private Text suffix = new Text("");
 
     /**
-     * @return the String ("" if not set) before the Field
+     * @return the Text ("" if not set) before the Field
      */
     @NotNull
-    public String getPrefix() {
+    public Text getPrefix() {
         return prefix;
     }
 
     /**
-     * @param newPrefix the String to put before the Field (e.g. "Players: ") when displaying
+     * @param newPrefix the Text to put before the Field (e.g. "Players: ") when displaying
      */
-    public void setPrefix(@NotNull String newPrefix) {
+    public void setPrefix(@NotNull Text newPrefix) {
         if (newPrefix == null) throw new IllegalArgumentException("newPrefix cannot be null");
         prefix = newPrefix;
     }
 
     /**
-     * @return the String ("" if not set) after the Field
+     * @return the Text ("" if not set) after the Field
      */
     @NotNull
-    public String getSuffix() { return suffix; }
+    public Text getSuffix() { return suffix; }
 
     /**
-     * @param newSuffix the String to put after the Field (e.g. "/100") when displaying
+     * @param newSuffix the Text to put after the Field (e.g. "/100") when displaying
      */
-    public void setSuffix(@NotNull String newSuffix) {
+    public void setSuffix(@NotNull Text newSuffix) {
         if (newSuffix == null) throw new IllegalArgumentException("newSuffix cannot be null");
         suffix = newSuffix;
     }
@@ -42,7 +42,7 @@ public class FieldText extends Text {
      */
     @Override
     public String getText() {
-        return prefix + field.getValue() + suffix;
+        return prefix.getText() + field.getValue() + suffix.getText();
     }
 
     /**
@@ -59,5 +59,12 @@ public class FieldText extends Text {
     public FieldText(@NotNull Field field) {
         super(String.valueOf(field.getValue()));
         this.field = field;
+    }
+
+    public FieldText(Field field, Text prefix, Text suffix) {
+        super(String.valueOf(field.getValue()));
+        this.field = field;
+        this.prefix = prefix;
+        this.suffix = suffix;
     }
 }
