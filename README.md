@@ -43,3 +43,30 @@ Result (click):
 </project>
 ```
 </details>
+<details>
+    <summary>Gradle (Groovy)</summary>
+
+```gradle
+repositories {
+    maven { url 'https://repo.codemc.io/repository/maven-snapshots/' }
+}
+
+dependencies {
+    implementation 'us.teaminceptus:vortexsidebars:[VERSION]'
+}
+```
+</details>
+
+<details>
+    <summary>Gradle (Kotlin DSL)</summary>
+
+```kotlin
+repositories {
+    maven(url = "https://repo.codemc.io/repository/maven-snapshots/")
+}
+
+dependencies {
+    implementation('us.teaminceptus:vortexsidebars:[VERSION]')
+}
+```
+</details>
