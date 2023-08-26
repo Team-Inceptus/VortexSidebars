@@ -48,7 +48,7 @@ Result (click):
 
 ```gradle
 repositories {
-    maven { url 'https://repo.codemc.io/repository/maven-snapshots/' }
+    maven { url 'https://repo.codemc.io/repository/maven-releases/' }
 }
 
 dependencies {
@@ -62,7 +62,7 @@ dependencies {
 
 ```kotlin
 repositories {
-    maven(url = "https://repo.codemc.io/repository/maven-snapshots/")
+    maven(url = "https://repo.codemc.io/repository/maven-releases/")
 }
 
 dependencies {
