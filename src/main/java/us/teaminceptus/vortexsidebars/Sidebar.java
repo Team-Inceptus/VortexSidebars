@@ -167,7 +167,7 @@ public final class Sidebar {
 
         assert Bukkit.getScoreboardManager() != null;
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        objective = scoreboard.registerNewObjective(title.getText(), "dummy", title.getText());
+        objective = scoreboard.registerNewObjective(title.getText(), "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         lines = new ArrayList<>(lines);
@@ -196,7 +196,7 @@ public final class Sidebar {
 
         assert Bukkit.getScoreboardManager() != null;
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        objective = scoreboard.registerNewObjective(title.getText(), "dummy", title.getText());
+        objective = scoreboard.registerNewObjective(title.getText(), "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         lines = new ArrayList<>(lines);
