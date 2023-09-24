@@ -1,7 +1,10 @@
 package us.teaminceptus.vortexsidebars.text;
 
 /**
- * An alternative to ChatColor that allows custom hex colors
+ * An alternative to ChatColor that allows for custom hex colors.
+ * WARNING: Hex colors only work for players on 1.16.1+.
+ * For players below 1.16.1, it will show the color of whatever the last digit of the hex code is (e.g. if the hex code is #fd3baa, players below 1.16.1 would be shown lime because a is the chat color for lime).
+ * In some cases it will display as that color for players 1.16.1 and above, and the reason for this is currently unknown. If someone could find what's causing it and make an issue on GitHub, that would be greatly appreciated.
  */
 public interface TextColor {
     String DARK_RED = "§4";

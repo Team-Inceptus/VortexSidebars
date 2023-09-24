@@ -188,6 +188,35 @@ public final class Sidebar {
 
         players = new ArrayList<>();
     }
+    public Sidebar(@NotNull Plugin plugin, @NotNull Text title, @Nullable List<Text> lines, long updateDelay) {
+        if (plugin == null) throw new IllegalArgumentException("plugin cannot be null");
+        if (title == null) throw new IllegalArgumentException("title cannot be null");
+
+        this.title = title;
+
+        assert Bukkit.getScoreboardManager() != null;
+        scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+        objective = scoreboard.registerNewObjective(title.getText(), "dummy", title.getText());
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+
+        lines = new ArrayList<>(lines);
+        this.lines = lines;
+
+        int score = 0;
+        for (Text line : lines) {
+            objective.getScore(line.getText()).setScore(score);
+            score++;
+        }
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                update();
+            }
+        }.runTaskTimer(plugin, updateDelay, updateDelay);
+
+        players = new ArrayList<>();
+    }
 
     private void update() {
         if (title instanceof AnimatedText) objective.setDisplayName(title.getText());

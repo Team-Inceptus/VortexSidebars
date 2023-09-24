@@ -7,7 +7,12 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Represents a Field that holds an output.
+ * @deprecated Use FunctionText instead.
+ * <p>
+ *     Note: there are no current plans to remove Field or FieldText.
+ * </p>
  */
+@Deprecated
 public class Field {
     private final Callable<Object> function;
 

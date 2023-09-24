@@ -6,13 +6,13 @@
 
   <groupId>us.teaminceptus</groupId>
   <artifactId>vortexsidebars</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
 
   <name>VortexSidebars</name>
 
   <properties>
-    <minecraft.version>1.16.1-R0.1-SNAPSHOT</minecraft.version>
+    <minecraft.version>1.8.8-R0.1-SNAPSHOT</minecraft.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -29,7 +29,7 @@
         <id>dragin</id>
         <organization>Team Inceptus</organization>
         <roles>
-            <role>Owner</role>
+            <role>Creator</role>
         </roles>
     </developer>
     <developer>
@@ -37,7 +37,7 @@
         <id>gamercoder215</id>
         <organization>Team Inceptus</organization>
         <roles>
-            <role>Admin</role>
+            <role>Contributor</role>
         </roles>
     </developer>
   </developers>

@@ -2,8 +2,15 @@ package us.teaminceptus.vortexsidebars.text;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @deprecated Use FunctionText instead.
+ * <p>
+ *     Note: there are no current plans to remove Field or FieldText.
+ * </p>
+ */
+@Deprecated
 public class FieldText extends Text {
-    private final Field field;
+    private Field field;
     private Text prefix = new Text("");
     private Text suffix = new Text("");
 
@@ -52,17 +59,25 @@ public class FieldText extends Text {
     public Field getField() {
         return field;
     }
+    public void setField(@NotNull Field newField) {
+        if (newField == null) throw new IllegalArgumentException("newField cannot be null");
+        field = newField;
+    }
 
     /**
      * @param field the Field (automatically updates when the value changes)
      */
     public FieldText(@NotNull Field field) {
-        super(String.valueOf(field.getValue()));
+        super("");
+        if (field == null) throw new IllegalArgumentException("field cannot be null");
         this.field = field;
     }
 
-    public FieldText(Field field, Text prefix, Text suffix) {
-        super(String.valueOf(field.getValue()));
+    public FieldText(@NotNull Field field, @NotNull Text prefix, @NotNull Text suffix) {
+        super("");
+        if (field == null) throw new IllegalArgumentException("field cannot be null");
+        if (prefix == null) throw new IllegalArgumentException("prefix cannot be null");
+        if (suffix == null) throw new IllegalArgumentException("suffix cannot be null");
         this.field = field;
         this.prefix = prefix;
         this.suffix = suffix;
